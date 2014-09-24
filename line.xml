@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of analytic_optional_move module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem
+            parent="analytic_account.menu_open_chart"
+            action="analytic_account.act_line_form"
+            id="menu_analytic_account_line"/>
+    </data>
+</tryton>

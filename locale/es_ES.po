@@ -1,0 +1,7 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.ui.menu,name:menu_analytic_account_line"
+msgid "Analytic Lines"
+msgstr "Líneas analíticas"
