@@ -18,8 +18,12 @@ copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_line_without_move">
             <field name="name">Analytic Lines without Move Line</field>
             <field name="res_model">analytic_account.line</field>
-            <field name="domain">[('move_line', '=', None)]</field>
-            <field name="search_value">[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]</field>
+            <field name="domain"
+                eval="[('move_line', '=', None)]"
+                pyson="1"/>
+            <field name="search_value"
+                eval="[('create_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_years=-1))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_line_tree_view">
             <field name="sequence" eval="10"/>
