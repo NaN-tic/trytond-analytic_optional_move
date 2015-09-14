@@ -121,7 +121,7 @@ class Account:
         return res
 
     @classmethod
-    def get_credit_debit(cls, accounts, name):
+    def get_credit_debit(cls, accounts, names):
         res = {}
         pool = Pool()
         Line = pool.get('analytic_account.line')
@@ -136,13 +136,14 @@ class Account:
         a_account = Account.__table__()
         company = Company.__table__()
 
-        if name not in ('credit', 'debit'):
-            raise Exception('Bad argument')
+        ids = [a.id for a in accounts]
+        for name in names:
+            if name not in ('credit', 'debit'):
+                raise Exception('Bad argument')
+            res[name] = {}.fromkeys(ids, Decimal('0.0'))
 
         id2account = {}
-        ids = [a.id for a in accounts]
         for account in accounts:
-            res[account.id] = Decimal('0.0')
             id2account[account.id] = account
 
         line_query = Line.query_get(line)
@@ -173,10 +174,11 @@ class Account:
                 else:
                     currency = Currency(currency_id)
                     id2currency[currency.id] = currency
-                res[account_id] += Currency.compute(currency, sum,
+                res[name][account_id] += Currency.compute(currency, sum,
                         id2account[account_id].currency, round=True)
             else:
-                res[account_id] += id2account[account_id].currency.round(sum)
+                res[name][account_id] += id2account[account_id].currency.round(
+                    sum)
 
         # Get analytic lines without account move lines
         cursor.execute(*table.join(line, 'LEFT',
@@ -199,9 +201,10 @@ class Account:
                 else:
                     currency = Currency(currency_id)
                     id2currency[currency.id] = currency
-                res[account_id] += Currency.compute(currency, sum,
+                res[name][account_id] += Currency.compute(currency, sum,
                         id2account[account_id].currency, round=True)
             else:
-                res[account_id] += id2account[account_id].currency.round(sum)
+                res[name][account_id] += id2account[account_id].currency.round(
+                    sum)
 
         return res
