@@ -10,10 +10,6 @@ msgctxt "model:ir.action,name:act_line_without_move"
 msgid "Analytic Lines without Move Line"
 msgstr "Línies analítiques sense apunt comptable"
 
-msgctxt "model:ir.ui.menu,name:"
-msgid "Analytic Lines"
-msgstr "Línies analítiques"
-
 msgctxt "model:ir.ui.menu,name:menu_analytic_line_without_move"
 msgid "Analytic Lines without Move Line"
 msgstr "Línies analítiques sense apunt comptable"
