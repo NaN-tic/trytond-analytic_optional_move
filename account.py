@@ -24,7 +24,7 @@ class Account:
         Account = pool.get('account.account')
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         line = Line.__table__()
         move_line = MoveLine.__table__()
@@ -129,7 +129,7 @@ class Account:
         Account = pool.get('account.account')
         Company = pool.get('company.company')
         Currency = pool.get('currency.currency')
-        cursor = Transaction().cursor
+        cursor = Transaction().connection.cursor()
         table = cls.__table__()
         line = Line.__table__()
         move_line = MoveLine.__table__()
