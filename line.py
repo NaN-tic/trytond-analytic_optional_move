@@ -8,10 +8,10 @@ from trytond.transaction import Transaction
 from trytond.pyson import Eval, If, Bool
 
 __all__ = ['Line']
-__metaclass__ = PoolMeta
 
 
 class Line:
+    __metaclass__ = PoolMeta
     __name__ = 'analytic_account.line'
 
     @classmethod

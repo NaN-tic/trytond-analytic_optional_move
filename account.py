@@ -9,10 +9,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Account']
-__metaclass__ = PoolMeta
 
 
 class Account:
+    __metaclass__ = PoolMeta
     __name__ = 'analytic_account.account'
 
     @classmethod
